@@ -1,14 +1,16 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
+export {};
 
-test('has title', async ({ page }) => {
+import { test, expect, Page } from '@playwright/test';
+
+test('has title', async ({ page }: { page: Page }) => {
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('get started link', async ({ page }) => {
+test('get started link', async ({ page }: { page: Page }) => {
   await page.goto('https://playwright.dev/');
 
   // Click the get started link.
