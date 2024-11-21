@@ -1,14 +1,22 @@
 import { test, expect } from './fixtures'; // Import the custom fixture
 
-// Test: Navigate to the Codegen Demo Application and validate title
+// Test suite: Codegen Demo with Custom Fixtures
 test.describe('Codegen Demo with Custom Fixtures', () => {
+  // Test: Validate page title
   test('should have title', async ({ todoPage }) => {
     await expect(todoPage).toHaveTitle('React • TodoMVC'); // Assert: Correct page title
   });
+
+// Test: Validate Header text exists and matches "Todos"
+test('should have header', async ({ todoPage }) => {
+  const header = todoPage.getByRole('heading', { name: 'todos' }); // Get header element
+  await expect(header).toBeVisible(); // Validate: Header is visible
+  await expect(header).toHaveText('todos'); // Assert: Header text matches "Todos"
+  });
+
 });
 
-// Validate Header text exists
-// Assert: Header text matches "Todos"
+
 
 // Validate input text field exists
 // Assert: Placeholder text is "What needs to be done?"
