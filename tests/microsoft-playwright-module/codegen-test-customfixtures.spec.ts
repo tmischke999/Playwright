@@ -15,7 +15,7 @@ test('should have header', async ({ todoPage }) => {
   });
 // Validate input text field exists
 // Assert: Placeholder text is "What needs to be done?"
-test('should have input field with correct placeholder', async ({ todoPage }) => {
+test.only('should have input field with correct placeholder', async ({ todoPage }) => {
   const inputField = todoPage.getByPlaceholder('What needs to be done?'); // Get input field
   await expect(inputField).toBeVisible(); // Validate: Input field is visible
   await expect(inputField).toHaveAttribute('placeholder', 'What needs to be done?'); // Assert: Placeholder text matches
