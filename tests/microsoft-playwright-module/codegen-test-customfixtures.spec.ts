@@ -2,10 +2,11 @@ import { test, expect } from './fixtures'; // Import the custom fixture
 
 // Test suite: Codegen Demo with Custom Fixtures
 test.describe('Codegen Demo with Custom Fixtures', () => {
-  // Test: Validate page title
-  test('should have title', async ({ todoPage }) => {
-    await expect(todoPage).toHaveTitle('React • TodoMVC'); // Assert: Correct page title
-  });
+
+// Test: Validate page title
+test('should have title', async ({ todoPage }) => {
+  await expect(todoPage).toHaveTitle('React • TodoMVC'); // Assert: Correct page title
+});
 
 // Test: Validate Header text exists and matches "Todos"
 test('should have header', async ({ todoPage }) => {
@@ -13,13 +14,24 @@ test('should have header', async ({ todoPage }) => {
   await expect(header).toBeVisible(); // Validate: Header is visible
   await expect(header).toHaveText('todos'); // Assert: Header text matches "Todos"
   });
+
 // Validate input text field exists
 // Assert: Placeholder text is "What needs to be done?"
-test.only('should have input field with correct placeholder', async ({ todoPage }) => {
+test('should have input field with correct placeholder', async ({ todoPage }) => {
   const inputField = todoPage.getByPlaceholder('What needs to be done?'); // Get input field
   await expect(inputField).toBeVisible(); // Validate: Input field is visible
   await expect(inputField).toHaveAttribute('placeholder', 'What needs to be done?'); // Assert: Placeholder text matches
   });
+
+// Test: Add a new todo item "water the plants"
+// Assert: Todo item "water the plants" appears in the list
+test('can type input and hit enter', async({ todoPage }) => {
+   const input = await todoPage.getInputField(); // Get input field    
+   await input.fill('water the plant'); 
+   await input.press('Enter'); 
+});
+
+
 });
 
 
@@ -28,8 +40,7 @@ test.only('should have input field with correct placeholder', async ({ todoPage 
 
 
 
-// Test: Add a new todo item "water the plants"
-// Assert: Todo item "water the plants" appears in the list
+
 
 // Validate toggle all icon exists
 // Validate delete icon exists
