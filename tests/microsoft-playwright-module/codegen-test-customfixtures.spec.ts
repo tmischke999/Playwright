@@ -29,6 +29,12 @@ test('can type input and hit enter', async({ todoPage }) => {
    const input = await todoPage.getInputField(); // Get input field    
    await input.fill('water the plant'); 
    await input.press('Enter'); 
+   await input.fill('water the plant'); 
+   await input.press('Enter'); 
+   await input.fill('water the plant'); 
+   await input.press('Enter'); 
+   await input.fill('water the plant'); 
+   await input.press('Enter'); 
 });
 
 
