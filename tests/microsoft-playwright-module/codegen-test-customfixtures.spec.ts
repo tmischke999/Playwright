@@ -13,13 +13,20 @@ test('should have header', async ({ todoPage }) => {
   await expect(header).toBeVisible(); // Validate: Header is visible
   await expect(header).toHaveText('todos'); // Assert: Header text matches "Todos"
   });
+// Validate input text field exists
+// Assert: Placeholder text is "What needs to be done?"
+test('should have input field with correct placeholder', async ({ todoPage }) => {
+  const inputField = todoPage.getByPlaceholder('What needs to be done?'); // Get input field
+  await expect(inputField).toBeVisible(); // Validate: Input field is visible
+  await expect(inputField).toHaveAttribute('placeholder', 'What needs to be done?'); // Assert: Placeholder text matches
 
 });
 
 
 
-// Validate input text field exists
-// Assert: Placeholder text is "What needs to be done?"
+
+
+
 
 // Test: Add a new todo item "water the plants"
 // Assert: Todo item "water the plants" appears in the list
