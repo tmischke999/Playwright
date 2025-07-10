@@ -40,8 +40,22 @@ export class TodoPage {
     await this.getToggleFor(text).check();
   }
 
+  getHeader(): Locator {
+    return this.page.getByRole('heading', {name:'todos'});
+  }
+
+  async getTitle(): Promise<string> {
+    return this.page.title();
+}
+
+  getPlaceholderInput(): Locator {
+    return this.page.getByPlaceholder('What needs to be done?');
+  }
+
+
   async deleteTodo(text: string): Promise<void> {
     await this.getTodoItem(text).hover();
     await this.getDeleteButtonFor(text).click();
   }
+
 }

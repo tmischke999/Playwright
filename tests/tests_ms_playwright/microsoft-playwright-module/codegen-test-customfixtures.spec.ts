@@ -5,12 +5,13 @@ test.describe('Codegen Demo with Custom Fixtures', () => {
 
 // Test: Validate page title
 test('should have title', async ({ todoPage }) => {
-  await expect(todoPage).toHaveTitle('React • TodoMVC'); // Assert: Correct page title
+  const title = await todoPage.getTitle();
+  expect(title).toBe('React • TodoMVC') // Assert: Correct page title
 });
 
 // Test: Validate Header text exists and matches "Todos"
 test('should have header', async ({ todoPage }) => {
-  const header = todoPage.getByRole('heading', { name: 'todos' }); // Get header element
+  const header = todoPage.getHeader(); // Get header element
   await expect(header).toBeVisible(); // Validate: Header is visible
   await expect(header).toHaveText('todos'); // Assert: Header text matches "Todos"
   });
@@ -18,7 +19,7 @@ test('should have header', async ({ todoPage }) => {
 // Validate input text field exists
 // Assert: Placeholder text is "What needs to be done?"
 test('should have input field with correct placeholder', async ({ todoPage }) => {
-  const inputField = todoPage.getByPlaceholder('What needs to be done?'); // Get input field
+  const inputField = todoPage.getPlaceholderInput(); // Get input field
   await expect(inputField).toBeVisible(); // Validate: Input field is visible
   await expect(inputField).toHaveAttribute('placeholder', 'What needs to be done?'); // Assert: Placeholder text matches
   });
