@@ -1,4 +1,4 @@
-import { test, expect } from './fixtures'; // Import the custom fixture
+import { test, expect } from '../../../fixtures'; // Import the custom fixture
 
 // Test suite: Codegen Demo with Custom Fixtures
 test.describe('Codegen Demo with Custom Fixtures', () => {
