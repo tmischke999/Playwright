@@ -30,9 +30,22 @@ export class TodoPage {
     }
   }
 
+  async setupDefaultTodos(): Promise<void> {
+    await this.stageTodoList([
+    'water the plants',
+    'feed the dog',
+    'sweep the floor'
+    ]);
+  }
+
   getToggleAll(): Locator {
     return this.page.locator('#toggle-all');
   }
+
+  getAllToggles(): Locator {
+    return this.page.getByRole('checkbox', { name: 'Toggle Todo'});
+  }
+
 
   getTodoItem(text: string): Locator {
     return this.page.locator('.view >> text=' + text);

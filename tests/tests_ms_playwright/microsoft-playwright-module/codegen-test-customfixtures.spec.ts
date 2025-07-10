@@ -1,4 +1,5 @@
 import { test, expect } from '../../../fixtures'; // Import the custom fixture
+import { TodoPage } from '../../../pages/TodoPage';
 
 // Test suite: Codegen Demo with Custom Fixtures
 test.describe('Codegen Demo with Custom Fixtures', () => {
@@ -39,6 +40,21 @@ test('toggle all exists', async({ todoPage }) => {
    await todoPage.stageTodoList(['water the plants', 'feed the dog', 'sweep the floor']) 
    const toggleAll = todoPage.getToggleAll(); 
    await expect(toggleAll).toBeVisible(); 
+});
+
+//Stage todos
+// Validate toggle all functions
+test('toggle all functions', async({ todoPage }) => {
+  await todoPage.setupDefaultTodos();
+  const toggleAll = todoPage.getToggleAll(); 
+  await toggleAll.check();
+  const toggles = todoPage.getAllToggles();
+  await expect(toggles).toHaveCount(3); // Optional: Check that 3 toggles are present
+
+  for (let i = 0; i < await toggles.count(); i++) {
+  await expect(toggles.nth(i)).toBeChecked();
+}
+
 });
 
 });
