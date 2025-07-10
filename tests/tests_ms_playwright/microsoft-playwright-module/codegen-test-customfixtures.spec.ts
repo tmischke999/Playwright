@@ -32,6 +32,14 @@ test('can type input and hit enter', async({ todoPage }) => {
    await input.press('Enter'); 
 });
 
+// Stage todos
+// Validate toggle all icon exists
+test('toggle all exists', async({ todoPage }) => {
+   const input = await todoPage.getInputField(); // Get input field    
+   await todoPage.stageTodoList(['water the plants', 'feed the dog', 'sweep the floor']) 
+   const toggleAll = todoPage.getToggleAll(); 
+   await expect(toggleAll).toBeVisible(); 
+});
 
 });
 

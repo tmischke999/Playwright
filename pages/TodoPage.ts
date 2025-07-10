@@ -24,6 +24,16 @@ export class TodoPage {
     await input.press('Enter');
   }
 
+  async stageTodoList(items: string[]): Promise<void> {
+    for (const item of items) {
+        await this.addTodo(item);
+    }
+  }
+
+  getToggleAll(): Locator {
+    return this.page.locator('#toggle-all');
+  }
+
   getTodoItem(text: string): Locator {
     return this.page.locator('.view >> text=' + text);
   }
@@ -51,6 +61,7 @@ export class TodoPage {
   getPlaceholderInput(): Locator {
     return this.page.getByPlaceholder('What needs to be done?');
   }
+
 
 
   async deleteTodo(text: string): Promise<void> {
