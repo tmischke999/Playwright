@@ -49,12 +49,10 @@ test('toggle all functions', async({ todoPage }) => {
   const toggleAll = todoPage.getToggleAll(); 
   await toggleAll.check();
   const toggles = todoPage.getAllToggles();
-  await expect(toggles).toHaveCount(3); // Optional: Check that 3 toggles are present
+  await expect(toggles).toHaveCount(3); //Check that 3 toggles are present
 
   for (let i = 0; i < await toggles.count(); i++) {
-  await expect(toggles.nth(i)).toBeChecked();
-}
-
+  await expect(toggles.nth(i)).toBeChecked();}
 });
 
 });
