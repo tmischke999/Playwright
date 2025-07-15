@@ -8,10 +8,11 @@ export class TodoPage {
     this.page = page;
   }
 
-  async goto() {
+  async goto(): Promise<void> {
     await this.page.goto('https://demo.playwright.dev/todomvc/#/');
   }
 
+  // Input helpers
   async getInputField(): Promise<Locator> {
     const input = this.page.getByPlaceholder('What needs to be done?');
     await expect(input).toBeVisible();
@@ -24,65 +25,56 @@ export class TodoPage {
     await input.press('Enter');
   }
 
-  async stageTodoList(items: string[]): Promise<void> {
-    for (const item of items) {
-        await this.addTodo(item);
-    }
-  }
-
   async setupDefaultTodos(): Promise<void> {
-    await this.stageTodoList([
-    'water the plants',
-    'feed the dog',
-    'sweep the floor'
-    ]);
+    await this.addTodo('water the plants');
+    await this.addTodo('feed the dog');
+    await this.addTodo('sweep the floor');
   }
 
-  getFilter(name: string): Locator {
-  return this.page.getByRole('link', { name });
-}
+  // Element selectors
+  getPlaceholderInput(): Locator {
+    return this.page.getByPlaceholder('What needs to be done?');
+  }
+
+  getHeader(): Locator {
+    return this.page.getByRole('heading', { name: 'todos' });
+  }
+
+  async getTitle(): Promise<string> {
+    return this.page.title();
+  }
+
+  getTodoItem(text: string): Locator {
+    return this.page.locator('li', { hasText: text });
+  }
 
   getToggleAll(): Locator {
     return this.page.locator('#toggle-all');
   }
 
   getAllToggles(): Locator {
-    return this.page.getByRole('checkbox', { name: 'Toggle Todo'});
+    return this.page.getByRole('checkbox', { name: 'Toggle Todo' });
   }
-
-getTodoItem(text: string): Locator {
-  return this.page.locator('li', { hasText: text });
-}
 
   getToggleFor(text: string): Locator {
     return this.getTodoItem(text).locator('.toggle');
   }
 
   getDeleteButtonFor(text: string): Locator {
-  return this.getTodoItem(text).locator('button[aria-label="Delete"]');
-}
+    return this.getTodoItem(text).locator('button[aria-label="Delete"]');
+  }
 
+  getFilter(name: string): Locator {
+    return this.page.getByRole('link', { name });
+  }
+
+  // Actions
   async toggleTodo(text: string): Promise<void> {
     await this.getToggleFor(text).check();
   }
-
-  getHeader(): Locator {
-    return this.page.getByRole('heading', {name:'todos'});
-  }
-
-  async getTitle(): Promise<string> {
-    return this.page.title();
-}
-
-  getPlaceholderInput(): Locator {
-    return this.page.getByPlaceholder('What needs to be done?');
-  }
-
-
 
   async deleteTodo(text: string): Promise<void> {
     await this.getTodoItem(text).hover();
     await this.getDeleteButtonFor(text).click();
   }
-
 }
