@@ -17,9 +17,10 @@ This project contains automated end-to-end tests for the TodoMVC app using Playw
 - `README.md`: This file  
 
 ---
-````markdown
-### ▶️ How to Run All Tests
 
+
+### ▶️ How to Run All Tests
+````markdown
 ```bash
 npx playwright test
 ````
