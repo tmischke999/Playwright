@@ -1,43 +1,41 @@
 ## 📘 Playwright Repository
 
-### 📁 Folder Structure
-- `pages/`  
-  Contains page object files.  
-  ▸ `TodoPage.ts`: Encapsulates reusable locators and actions for the TodoMVC page.
+This project contains automated end-to-end tests for the TodoMVC app using Playwright, custom fixtures, and the Page Object Model.
 
-- `tests/`  
-  Contains all test suites.
-  - `tests example/`: Sample tests for learning or scaffolding.
-  - `tests_ms_playwright/microsoft-playwright-module/`:  
-    Tests created for the Microsoft Playwright training module.  
-    ▸ `codegen-test-customfixtures.spec.ts`: Custom fixture-based test suite for TodoMVC.
+### 📁 Key Folders
 
-- `fixtures.ts`  
-  Custom Playwright test fixture for injecting the `TodoPage` into test contexts.
+- `pages/`: Page object models  
+  ▸ `TodoPage.ts`: Encapsulates locators and actions for the TodoMVC interface
 
-- `playwright.config.ts`  
-  Playwright configuration file for defining timeouts, test directories, and reporter options.
+- `tests/`: Test suites  
+  - `tests_example/`: Sample Playwright tests  
+  - `tests_ms_playwright/microsoft-playwright-module/`: Microsoft module tests  
+    ▸ `codegen-test-customfixtures.spec.ts`: All TodoMVC tests are written here
 
-- `README.md`  
-  Repository documentation (this file).
+- `fixtures.ts`: Shared fixture setup that injects `TodoPage` into test context  
+- `playwright.config.ts`: Playwright configuration  
+- `README.md`: This file  
 
-- `tsconfig.json`  
-  TypeScript configuration.
+---
+You're absolutely right — my previous suggestion rendered the inner headings (`###`) and backticks literally inside the code block, which is not what you want.
 
-- `.github/`, `dist/`, `node_modules/`, `test-results/`, `playwright-report/`  
-  Output, dependency, and configuration directories generated or used during test runs.
+To fix your README so that each `npx` command appears in a nicely rendered, **separate code block** and with **headings outside**, use this exact Markdown formatting:
 
 ---
 
+````markdown
 ### ▶️ How to Run All Tests
 
-````bash
+```bash
 npx playwright test
+````
 
 ### ▶️ How to Run Specific Test Folders
 
-````bash
+```bash
 npx playwright test tests/tests_example/
+```
 
+```bash
 npx playwright test tests/tests_ms_playwright/microsoft-playwright-module/
-
+```
