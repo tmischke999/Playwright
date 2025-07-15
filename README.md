@@ -18,14 +18,13 @@ This project contains automated end-to-end tests for the TodoMVC app using Playw
 
 ---
 
-### ▶️ How to Run All Tests
 ````markdown
+### ▶️ How to Run All Tests
 ```bash
 npx playwright test
-````
+```
 
 ### ▶️ How to Run Specific Test Folders
-
 ```bash
 npx playwright test tests/tests_example/
 ```
@@ -33,6 +32,4 @@ npx playwright test tests/tests_example/
 ```bash
 npx playwright test tests/tests_ms_playwright/microsoft-playwright-module/
 ```
-
-```
-```
+````
