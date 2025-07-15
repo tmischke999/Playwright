@@ -69,10 +69,11 @@ test('toggle all checks all todos', async ({ todoPage }) => {
 //Stage todos
 // Validate delete icon exists
 test('delete icon exists for each todo item', async ({ todoPage }) => {
-  await todoPage.setupDefaultTodos(); 
-
+  await todoPage.setupDefaultTodos();
   const todos = ['water the plants', 'feed the dog', 'sweep the floor'];
+
   for (const item of todos) {
+    await todoPage.getTodoItem(item).hover();
     const deleteButton = todoPage.getDeleteButtonFor(item);
     await expect(deleteButton).toBeVisible();
   }
@@ -81,12 +82,14 @@ test('delete icon exists for each todo item', async ({ todoPage }) => {
 //Stage todos
 // Validate delete functions
 test('delete icon removes selected todo', async ({ todoPage }) => {
-  await todoPage.setupDefaultTodos(); 
+  await todoPage.setupDefaultTodos();
 
-  await todoPage.deleteTodo('feed the dog');
+  await todoPage.getTodoItem('feed the dog').hover();
+  const deleteButton = todoPage.getDeleteButtonFor('feed the dog');
+  await deleteButton.click();
 
-  const deletedItem = todoPage.getTodoItem('feed the dog');
-  await expect(deletedItem).toHaveCount(0);
+  const removedItem = todoPage.getTodoItem('feed the dog');
+  await expect(removedItem).toHaveCount(0);
 });
 
 //stage todos

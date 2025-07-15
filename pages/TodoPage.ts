@@ -50,10 +50,9 @@ export class TodoPage {
     return this.page.getByRole('checkbox', { name: 'Toggle Todo'});
   }
 
-
-  getTodoItem(text: string): Locator {
-    return this.page.locator('.view >> text=' + text);
-  }
+getTodoItem(text: string): Locator {
+  return this.page.locator('li', { hasText: text });
+}
 
   getToggleFor(text: string): Locator {
     return this.getTodoItem(text).locator('.toggle');
