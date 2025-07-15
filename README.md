@@ -28,7 +28,15 @@ npx playwright test tests/tests_example/
 ```
 
 ```bash
-npx playwright test tests/tests_ms_playwright/microsoft-playwright-module/
+npx playwright test tests/tests_example/examples/demo-todo-app.spec.ts
+```
+
+```bash
+npx playwright test tests/tests_example/examples/example.spec.ts
+```
+
+```bash
+npx playwright test tests/tests_example/examples/my-first-test.spec.ts
 ```
 
 ```bash
