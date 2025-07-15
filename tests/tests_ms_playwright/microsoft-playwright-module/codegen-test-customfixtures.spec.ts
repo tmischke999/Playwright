@@ -89,6 +89,17 @@ test('delete icon removes selected todo', async ({ todoPage }) => {
   await expect(deletedItem).toHaveCount(0);
 });
 
+//stage todos
+// Validate All, Active, and Completed filters exist
+test('filters All, Active, Completed exist', async ({ todoPage }) => {
+  await todoPage.setupDefaultTodos();
+  const filters = ['All', 'Active', 'Completed'];
+
+  for (const name of filters) {
+    const filter = todoPage.getFilter(name);
+    await expect(filter).toBeVisible();
+  }
+});
 
 
 });

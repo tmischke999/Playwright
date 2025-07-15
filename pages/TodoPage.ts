@@ -38,6 +38,10 @@ export class TodoPage {
     ]);
   }
 
+  getFilter(name: string): Locator {
+  return this.page.getByRole('link', { name });
+}
+
   getToggleAll(): Locator {
     return this.page.locator('#toggle-all');
   }
@@ -56,8 +60,8 @@ export class TodoPage {
   }
 
   getDeleteButtonFor(text: string): Locator {
-    return this.getTodoItem(text).locator('.destroy');
-  }
+  return this.getTodoItem(text).locator('button[aria-label="Delete"]');
+}
 
   async toggleTodo(text: string): Promise<void> {
     await this.getToggleFor(text).check();
