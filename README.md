@@ -17,11 +17,6 @@ This project contains automated end-to-end tests for the TodoMVC app using Playw
 - `README.md`: This file  
 
 ---
-You're absolutely right — my previous suggestion rendered the inner headings (`###`) and backticks literally inside the code block, which is not what you want.
-
-To fix your README so that each `npx` command appears in a nicely rendered, **separate code block** and with **headings outside**, use this exact Markdown formatting:
-
----
 
 ````markdown
 ### ▶️ How to Run All Tests
