@@ -44,17 +44,29 @@ test('toggle all exists', async({ todoPage }) => {
 
 //Stage todos
 // Validate toggle all functions
-test('toggle all functions', async({ todoPage }) => {
+test('toggle all icon exists and individual toggles render', async ({ todoPage }) => {
   await todoPage.setupDefaultTodos();
-  const toggleAll = todoPage.getToggleAll(); 
-  await toggleAll.check();
+  const toggleAll = todoPage.getToggleAll();
+  await expect(toggleAll).toBeVisible(); // Check toggle-all input exists
+
   const toggles = todoPage.getAllToggles();
-  await expect(toggles).toHaveCount(3); //Check that 3 toggles are present
+  await expect(toggles).toHaveCount(3); // Check all items have toggle inputs
+});
 
+//Stage todos
+// Validate all toggles are checked
+test('toggle all checks all todos', async ({ todoPage }) => {
+  await todoPage.setupDefaultTodos();
+  const toggleAll = todoPage.getToggleAll();
+  await toggleAll.check();
+
+  const toggles = todoPage.getAllToggles();
   for (let i = 0; i < await toggles.count(); i++) {
-  await expect(toggles.nth(i)).toBeChecked();}
+    await expect(toggles.nth(i)).toBeChecked();
+  }
 });
 
+
 });
 
 
@@ -65,7 +77,7 @@ test('toggle all functions', async({ todoPage }) => {
 
 
 
-// Validate toggle all icon exists
+
 // Validate delete icon exists
 
 // Assert: Todo count updates correctly after adding items
