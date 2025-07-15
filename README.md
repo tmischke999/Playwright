@@ -30,3 +30,7 @@ npx playwright test tests/tests_example/
 ```bash
 npx playwright test tests/tests_ms_playwright/microsoft-playwright-module/
 ```
+
+```bash
+npx playwright test tests/tests_ms_playwright/microsoft-playwright-module/codegen-test-customfixtures.spec.ts
+```
